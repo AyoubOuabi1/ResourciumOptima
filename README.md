@@ -1,4 +1,4 @@
-# Project Name
+# ResourciumOptima
 
 ## Installation and Setup
 
