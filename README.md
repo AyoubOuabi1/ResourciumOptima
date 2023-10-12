@@ -1,15 +1,19 @@
-ResourciumOptima
-Installation and Setup
+# Project Name
+
+## Installation and Setup
+
 Follow these steps to install and run the project on your local machine.
 
-Prerequisites
+### Prerequisites
+
 Before you begin, make sure you have the following software installed on your system:
 
-Java Development Kit (JDK) 11 or later
-Apache Tomcat 10.1
-MySQL
-Apache Maven
-Clone the Repository
+- Java Development Kit (JDK) 11 or later
+- Apache Tomcat 10.1
+- MySQL
+- Apache Maven
+
+### Clone the Repository
 
 `
 git clone https://github.com/your-username/your-repo.git .
