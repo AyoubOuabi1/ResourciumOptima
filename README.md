@@ -16,10 +16,10 @@ Before you begin, make sure you have the following software installed on your sy
 ### Clone the Repository
 
 `
-
 git clone https://github.com/your-username/your-repo.git
-
 `
+.
+
 `
 
 cd your-repo
