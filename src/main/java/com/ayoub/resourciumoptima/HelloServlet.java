@@ -26,9 +26,7 @@ public class HelloServlet extends HttpServlet {
         entityManager.getTransaction().begin();
         entityManager.persist(em);
         entityManager.flush();
-
         entityManager.getTransaction().commit();
-
         entityManager.close();
         entityManagerFactory.close();
         new PrintWriter(response.getWriter()).println(em.getName());

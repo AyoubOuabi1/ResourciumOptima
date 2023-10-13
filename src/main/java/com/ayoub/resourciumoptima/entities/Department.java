@@ -23,8 +23,5 @@ public class Department {
     @Setter
     private List<Employee> employees;
 
-    @OneToMany(mappedBy = "assignedDepartment", cascade = CascadeType.ALL)
-    @Getter
-    @Setter
-    private List<Task> tasks;
+
 }

@@ -38,12 +38,6 @@ public class Task {
     private Employee assignedEmployee;
 
     @ManyToOne
-    @JoinColumn(name = "assigned_department_id")
-    @Getter
-    @Setter
-    private Department assignedDepartment;
-
-    @ManyToOne
     @JoinColumn(name = "assigned_equipment_id")
     @Getter
     @Setter
