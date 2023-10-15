@@ -39,5 +39,15 @@ public class EmployeeRepository implements RepositoryDbInterface<Employee> {
 
     }
 
+    public Employee findByEmailAndPassword(  String email,String password ) {
+        List<Employee> employees = entityManager.createQuery("SELECT e FROM Employee e WHERE e.email = :email AND e.password = :password", Employee.class)
+                .setParameter("email", email)
+                .setParameter("password", password)
+                .getResultList();
+        if (employees.size() > 0) {
+            return employees.get(0);
+        }
+        return null;
+    }
 
 }

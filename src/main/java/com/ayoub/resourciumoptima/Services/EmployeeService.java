@@ -28,4 +28,8 @@ public class EmployeeService {
     public List<Employee> getEmployees() {
         return employeeRepository.getAll();
     }
+
+    public Employee checkLogin(String email, String password) {
+        return employeeRepository.findByEmailAndPassword(email, password);
+    }
 }

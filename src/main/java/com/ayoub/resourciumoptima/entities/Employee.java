@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table( name = "Employee")
@@ -29,6 +30,10 @@ public class Employee {
     @Getter
     @Setter
     private String username;
+    @Column(name = "password")
+    @Getter
+    @Setter
+    private String password;
 
     @Column(name = "email")
     @Getter
@@ -50,4 +55,14 @@ public class Employee {
     @Getter
     @Setter
     private List<Task> tasks;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(password, employee.password) && Objects.equals(email, employee.email);
+    }
+
+
 }
