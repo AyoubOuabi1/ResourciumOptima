@@ -1,18 +1,34 @@
 package com.ayoub.resourciumoptima.Repositories;
 
 import com.ayoub.resourciumoptima.entities.Employee;
+import com.ayoub.resourciumoptima.interfaces.EmployeeRepository;
 import com.ayoub.resourciumoptima.interfaces.RepositoryDbInterface;
+
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transaction;
 
 import java.util.List;
 
-public class EmployeeRepository implements RepositoryDbInterface<Employee> {
-    @PersistenceContext
+  public class EmployeeRepositoryImp implements EmployeeRepository {
+
     private EntityManager entityManager;
+
+
+    public EmployeeRepositoryImp () {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+         entityManager = entityManagerFactory.createEntityManager();
+    }
+
     @Override
     public void save(Employee obj) {
+        entityManager.getTransaction().begin();
         entityManager.persist(obj);
+        entityManager.flush();
+        entityManager.getTransaction().commit();
     }
 
     @Override
@@ -39,6 +55,7 @@ public class EmployeeRepository implements RepositoryDbInterface<Employee> {
 
     }
 
+    @Override
     public Employee findByEmailAndPassword(  String email,String password ) {
         List<Employee> employees = entityManager.createQuery("SELECT e FROM Employee e WHERE e.email = :email AND e.password = :password", Employee.class)
                 .setParameter("email", email)

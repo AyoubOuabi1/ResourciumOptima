@@ -13,17 +13,15 @@
     <hr class="sidebar-divider my-0">
     <ul class="navbar-nav text-light" id="accordionSidebar">
       <li class="nav-item"><a class="nav-link" href="#">
-        <i class="bi bi-house"></i><span>test</span></a></li>
+        <i class="bi bi-house"></i><span>Employee</span></a></li>
       <li class="nav-item"><a class="nav-link  " href="#"><i
-              class="bi bi-speedometer2"></i><span>testt</span></a></li>
+              class="bi bi-speedometer2"></i><span>Reservation</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#"><i
-              class="bi bi-tags"></i><span>testt</span></a></li>
+              class="bi bi-tags"></i><span>Equipment</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#"><i
-              class="bi bi-file-play"></i><span>ttttt</span></a></li>
+              class="bi bi-file-play"></i><span>Department</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#"><i
-              class="bi bi-person-circle"></i><span>tttt</span></a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i
-              class="bi bi-person-circle"></i><span>ttttt</span></a></li>
+              class="bi bi-person-circle"></i><span>My Profile</span></a></li>
     </ul>
     <div class="text-center d-none d-md-inline">
       <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
