@@ -6,6 +6,7 @@ import com.ayoub.resourciumoptima.entities.Task;
 import com.ayoub.resourciumoptima.interfaces.DepartmentRepository;
 import com.ayoub.resourciumoptima.interfaces.TaskRepository;
 import jakarta.persistence.EntityManager;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.List;
 
@@ -53,7 +54,9 @@ public class TaskRepositoryImp implements TaskRepository {
     }
 
     @Override
-    public List<Task> getAll() {
+    public List<Task> getAll( ) {
         return entityManager.createQuery("SELECT e FROM Task e", Task.class).getResultList();
     }
+
+
 }

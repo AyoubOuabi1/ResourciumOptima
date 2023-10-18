@@ -7,10 +7,13 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import java.io.IOException;
 import java.net.http.HttpRequest;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class EmployeeService {
@@ -51,7 +54,7 @@ public class EmployeeService {
         HttpSession session=request.getSession();
         Employee emp=(Employee) session.getAttribute("currentUser");
         List<Employee> employees = employeeRepository.getAll();
-        return employees.stream().filter(employee -> employee.getId()==emp.getId()).toList();
+        return employees.stream().filter(employee -> employee.getId()==emp.getId()).collect(Collectors.toList());
      }
 
     public Employee checkLogin(String email, String password)  throws NullPointerException{
@@ -59,5 +62,11 @@ public class EmployeeService {
             return employeeRepository.findByEmailAndPassword(email, password);
         }
         return null;
+    }
+
+    public void logOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session=request.getSession();
+        session.invalidate();
+        response.sendRedirect("login.jsp");
     }
 }

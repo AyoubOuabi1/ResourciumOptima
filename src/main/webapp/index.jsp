@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-
+<%
+    if (session.getAttribute("currentUser") == null) {
+        System.out.println("login");
+        response.sendRedirect("login.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html lang="<%= request.getLocale().toString().replace('_', '-') %>">
 <head>

@@ -17,7 +17,15 @@
             <a class="dropdown-item" href="">
               <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile
             </a>
-            <div class="dropdown-divider"></div><a class="dropdown-item" href=""><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+            <form action="${pageContext.request.contextPath}/logout" method="post">
+              <a class="dropdown-item" href="">
+                <button type="submit">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout
+
+                </button>
+              </a>
+            </form>
+
           </div>
         </div>
       </li>

@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "homeServlet",value = "/")
+@WebServlet(name = "homeServlet",value = "/test")
 public class HomeServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
@@ -25,7 +25,7 @@ public class HomeServlet extends HttpServlet {
             resp.sendRedirect("login.jsp");
         }else {
             System.out.println("index");
-            resp.sendRedirect("home.jsp");
+            resp.sendRedirect("index.jsp");
 
         }
     }

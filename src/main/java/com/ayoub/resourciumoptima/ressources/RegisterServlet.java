@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
         if(employeeService!=null && employeeService.checkLogin(email, password)!=null){
             HttpSession session = request.getSession();
             session.setAttribute("currentUser",employeeService.checkLogin(email, password));
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("index.jsp");
         }
     }
 
