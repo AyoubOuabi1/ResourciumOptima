@@ -20,27 +20,38 @@ public class EmployeeService {
     }
 
 
-    public Employee findEmployee(Long id) {
+    public Employee findEmployee(Long id) throws NullPointerException {
         return employeeRepository.findById(id);
     }
 
     public void saveEmployee(Employee employee) {
-        employeeRepository.save(employee);
+        if (employee != null){
+            employeeRepository.save(employee);
+        }
+
     }
 
-    public void removeEmployee(Long id) {
-        employeeRepository.delete(id);
+    public void removeEmployee(Long id) throws Exception {
+        if (id != null){
+            employeeRepository.delete(id);
+        }
+
     }
 
-    public void updateEmployee(Employee employee) {
-        employeeRepository.update(employee);
-    }
+    public void updateEmployee(Employee employee) throws Exception {
+        if (employee != null){
+            employeeRepository.update(employee);
+        }
+     }
 
-    public List<Employee> getEmployees() {
+    public List<Employee> getEmployees()  throws NullPointerException{
         return employeeRepository.getAll();
     }
 
-    public Employee checkLogin(String email, String password) {
-        return employeeRepository.findByEmailAndPassword(email, password);
+    public Employee checkLogin(String email, String password)  throws NullPointerException{
+        if (email != null && password != null){
+            return employeeRepository.findByEmailAndPassword(email, password);
+        }
+        return null;
     }
 }

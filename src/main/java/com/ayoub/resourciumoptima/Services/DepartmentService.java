@@ -1,32 +1,53 @@
 package com.ayoub.resourciumoptima.Services;
 
-import com.ayoub.resourciumoptima.Repositories.DepartmentRepository;
+import com.ayoub.resourciumoptima.Repositories.DepartmentRepositoryImp;
+import com.ayoub.resourciumoptima.Repositories.TaskRepositoryImp;
 import com.ayoub.resourciumoptima.entities.Department;
-import com.ayoub.resourciumoptima.entities.Employee;
+import com.ayoub.resourciumoptima.entities.Task;
+import com.ayoub.resourciumoptima.interfaces.DepartmentRepository;
+import com.ayoub.resourciumoptima.interfaces.TaskRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
 
+@ApplicationScoped
 public class DepartmentService {
 
-    DepartmentRepository departmentRepository;
+    //@Inject
+    private DepartmentRepository departmentRepository;
 
-    public Department findDepartment(Long id) {
+    public DepartmentService(){
+        departmentRepository=new DepartmentRepositoryImp();
+    }
+
+
+    public Department findDepartment(Long id) throws NullPointerException {
         return departmentRepository.findById(id);
     }
 
     public void saveDepartment(Department department) {
-        departmentRepository.save(department);
+        if (department != null){
+            departmentRepository.save(department);
+        }
+
     }
 
-    public void removeDepartment(Long id) {
-        departmentRepository.delete(id);
+    public void removeDepartment(Long id) throws Exception {
+        if (id != null){
+            departmentRepository.delete(id);
+        }
+
     }
 
-    public void updateDepartment(Department department) {
-        departmentRepository.update(department);
-    }
+    public void updateDepartment(Department department) throws Exception {
+        if (department != null){
+            departmentRepository.update(department);
+        }
+     }
 
-    public List<Department> getDepartments() {
+    public List<Department> getTasks()  throws NullPointerException{
         return departmentRepository.getAll();
     }
+
+
 }

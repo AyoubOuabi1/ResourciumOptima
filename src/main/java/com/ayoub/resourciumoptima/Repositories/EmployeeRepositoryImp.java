@@ -1,15 +1,10 @@
 package com.ayoub.resourciumoptima.Repositories;
 
+import com.ayoub.resourciumoptima.Config.EntityManagerFct;
 import com.ayoub.resourciumoptima.entities.Employee;
 import com.ayoub.resourciumoptima.interfaces.EmployeeRepository;
-import com.ayoub.resourciumoptima.interfaces.RepositoryDbInterface;
 
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transaction;
 
 import java.util.List;
 
@@ -19,8 +14,7 @@ import java.util.List;
 
 
     public EmployeeRepositoryImp () {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-         entityManager = entityManagerFactory.createEntityManager();
+          entityManager = EntityManagerFct.getEntityManager();
     }
 
     @Override

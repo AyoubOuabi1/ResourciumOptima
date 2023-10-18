@@ -2,6 +2,7 @@ package com.ayoub.resourciumoptima;
 
 import java.io.*;
 
+import com.ayoub.resourciumoptima.Services.DepartmentService;
 import com.ayoub.resourciumoptima.Services.EmployeeService;
 import com.ayoub.resourciumoptima.entities.Department;
 import com.ayoub.resourciumoptima.entities.Employee;
@@ -22,18 +23,24 @@ import jakarta.servlet.annotation.*;
 public class HelloServlet extends HttpServlet {
 
     EmployeeService employeeService;
+    DepartmentService departmentService;
     public void init() {
         employeeService = new EmployeeService();
+        departmentService=new DepartmentService();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-       /* Employee employee = new Employee();
-        employee.setFirstName("ayoub");
+        Employee employee = new Employee();
+        employee.setFirstName("mohamed");
         employee.setLastName("ouabi");
         employee.setEmail("ayoub@gmail.com");
         employee.setPassword("ayoub");
         employee.setPosition("374238742384");
-        employeeService.saveEmployee(employee);*/
+        Department department=new Department();
+        department.setName("resourcium");
+        departmentService.saveDepartment(department);
+        employee.setDepartment(department);
+        employeeService.saveEmployee(employee);
         response.sendRedirect("login.jsp");
     }
 
