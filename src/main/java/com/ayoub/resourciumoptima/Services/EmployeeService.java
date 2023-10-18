@@ -6,7 +6,10 @@ import com.ayoub.resourciumoptima.interfaces.EmployeeRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
+import java.net.http.HttpRequest;
 import java.util.List;
 
 @ApplicationScoped
@@ -44,9 +47,12 @@ public class EmployeeService {
         }
      }
 
-    public List<Employee> getEmployees()  throws NullPointerException{
-        return employeeRepository.getAll();
-    }
+    public List<Employee> getEmployees(HttpServletRequest request)  throws NullPointerException{
+        HttpSession session=request.getSession();
+        Employee emp=(Employee) session.getAttribute("currentUser");
+        List<Employee> employees = employeeRepository.getAll();
+        return employees.stream().filter(employee -> employee.getId()==emp.getId()).toList();
+     }
 
     public Employee checkLogin(String email, String password)  throws NullPointerException{
         if (email != null && password != null){

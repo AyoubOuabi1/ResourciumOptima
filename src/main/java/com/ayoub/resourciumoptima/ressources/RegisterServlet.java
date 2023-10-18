@@ -1,26 +1,20 @@
-package com.ayoub.resourciumoptima;
-
-import java.io.*;
+package com.ayoub.resourciumoptima.ressources;
 
 import com.ayoub.resourciumoptima.Services.DepartmentService;
 import com.ayoub.resourciumoptima.Services.EmployeeService;
 import com.ayoub.resourciumoptima.entities.Department;
 import com.ayoub.resourciumoptima.entities.Employee;
-import jakarta.inject.Inject;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.security.enterprise.AuthenticationStatus;
-import jakarta.security.enterprise.SecurityContext;
-import jakarta.security.enterprise.authentication.mechanism.http.AuthenticationParameters;
-import jakarta.security.enterprise.credential.Credential;
-import jakarta.security.enterprise.credential.UsernamePasswordCredential;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-@WebServlet(name = "login", value = "/login")
-public class HelloServlet extends HttpServlet {
+import java.io.IOException;
+
+@WebServlet(name = "RegisterServlet", value = "/register")
+public class RegisterServlet extends HttpServlet {
 
     EmployeeService employeeService;
     DepartmentService departmentService;
@@ -51,7 +45,7 @@ public class HelloServlet extends HttpServlet {
         if(employeeService!=null && employeeService.checkLogin(email, password)!=null){
             HttpSession session = request.getSession();
             session.setAttribute("currentUser",employeeService.checkLogin(email, password));
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("home.jsp");
         }
     }
 
