@@ -26,11 +26,11 @@ import java.util.List;
     }
 
     @Override
-    public void delete(Long id) {
-        Employee employe = findById(id);
-        if (employe != null) {
-            entityManager.remove(employe);
-        }
+    public void delete(Employee employee) {
+        entityManager.getTransaction().begin();
+        entityManager.remove(employee);
+        entityManager.flush();
+        entityManager.getTransaction().commit();
     }
 
     @Override

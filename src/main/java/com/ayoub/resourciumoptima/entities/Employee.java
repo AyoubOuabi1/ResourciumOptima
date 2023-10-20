@@ -59,5 +59,16 @@ public class Employee {
         return Objects.equals(password, employee.password) && Objects.equals(email, employee.email);
     }
 
-
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", position='" + position + '\'' +
+                ", department=" + department +
+                '}';
+    }
 }

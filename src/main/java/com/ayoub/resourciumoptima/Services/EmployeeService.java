@@ -1,5 +1,6 @@
 package com.ayoub.resourciumoptima.Services;
 
+import com.ayoub.resourciumoptima.Config.EntityManagerFct;
 import com.ayoub.resourciumoptima.Repositories.EmployeeRepositoryImp;
 import com.ayoub.resourciumoptima.entities.Employee;
 import com.ayoub.resourciumoptima.interfaces.EmployeeRepository;
@@ -39,15 +40,21 @@ public class EmployeeService {
 
     public void removeEmployee(Long id) throws Exception {
         if (id != null){
-            employeeRepository.delete(id);
+            Employee employee = employeeRepository.findById(id);
+            if (employee != null) {
+                employeeRepository.delete(employee);
+            }
         }
+       // EntityManagerFct.getEntityManager().remove(employee);
+       // employeeRepository.delete(employee);
 
     }
 
-    public void updateEmployee(Employee employee) throws Exception {
+    public Employee updateEmployee(Employee employee) throws Exception {
         if (employee != null){
             employeeRepository.update(employee);
         }
+        return employee;
      }
 
     public List<Employee> getEmployees(HttpServletRequest request)  throws NullPointerException{

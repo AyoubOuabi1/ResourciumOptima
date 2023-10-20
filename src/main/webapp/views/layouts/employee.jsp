@@ -31,6 +31,7 @@
                         <th>position</th>
                          <th>open task</th>
                         <th>update department</th>
+                        <th>delete</th>
                 </tr>
                 </thead>
                 <tbody id="emplyeetable">
@@ -41,7 +42,14 @@
                         <td><%= employee.getEmail() %></td>
                         <td><%= employee.getPosition() %></td>
                         <td><a href="#"><button class="btn btn-success">open</button></a></td>
-                        <td><button class="btn btn-danger">update</button></td>
+                        <td><button class="btn btn-primary">update</button></td>
+                        <td> <form action="${pageContext.request.contextPath}/employees" method="post">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="employeeId" value="<%=employee.getId()%>">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+
                     </tr>
                 <% } %>
 

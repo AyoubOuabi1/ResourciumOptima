@@ -1,5 +1,6 @@
 package com.ayoub.resourciumoptima.ressources;
 
+import com.ayoub.resourciumoptima.Config.EntityManagerFct;
 import com.ayoub.resourciumoptima.Services.DepartmentService;
 import com.ayoub.resourciumoptima.Services.EmployeeService;
 import com.ayoub.resourciumoptima.entities.Department;
@@ -43,11 +44,26 @@ public class EmployeeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action=req.getParameter("action");
+        if (action.equals("delete")){
+            try {
+                deleteEmployee(req, resp);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }else if (action.equals("create")){
+            addEmployee(req, resp);
+        }
+    }
+
+    private void deleteEmployee(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        Long id = Long.valueOf(req.getParameter("employeeId"));
+        employeeService.removeEmployee(id);
+        resp.sendRedirect("/ResourciumOptima_war/employees");
+    }
+
+    void addEmployee(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Long DepartmentId = Long.valueOf(req.getParameter("departmentId"));
-        /*Long DepartmentId=2L;
-       *//* if (DepartmentId!=null) {
-            DepartmentId= 2L;
-        }*/
         Department department = departmentService.findDepartment(DepartmentId);
         Employee employee = new Employee();
         employee.setDepartment(department);

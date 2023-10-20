@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center mt-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="action" value="create" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>

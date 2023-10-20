@@ -8,7 +8,7 @@ public interface EmployeeRepository {
 
     void save(Employee obj);
 
-    void delete(Long id);
+    void delete(Employee id);
 
     void update(Employee obj);
 

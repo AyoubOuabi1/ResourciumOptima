@@ -30,7 +30,7 @@ public class DepartmentRepositoryImp implements DepartmentRepository {
         if (de != null){
             entityManager.getTransaction().begin();
             entityManager.remove(de);
-            //entityManager.flush();
+           // entityManager.flush();
             entityManager.getTransaction().commit();
 
         }
