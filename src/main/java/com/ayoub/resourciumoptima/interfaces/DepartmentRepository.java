@@ -9,7 +9,7 @@ public interface DepartmentRepository {
 
     void save(Department obj);
 
-    void delete(Long id);
+    void delete(Department obj);
 
     void update(Department obj);
 

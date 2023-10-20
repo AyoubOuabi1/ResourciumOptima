@@ -25,16 +25,11 @@ public class DepartmentRepositoryImp implements DepartmentRepository {
     }
 
     @Override
-    public void delete(Long id) {
-        Department de = findById(id);
-        if (de != null){
-            entityManager.getTransaction().begin();
-            entityManager.remove(de);
-           // entityManager.flush();
-            entityManager.getTransaction().commit();
-
-        }
-
+    public void delete(Department de) {
+        entityManager.getTransaction().begin();
+        entityManager.remove(de);
+        entityManager.flush();
+        entityManager.getTransaction().commit();
     }
 
     @Override

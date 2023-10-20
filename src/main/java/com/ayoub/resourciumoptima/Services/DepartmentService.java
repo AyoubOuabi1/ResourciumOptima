@@ -35,7 +35,11 @@ public class DepartmentService {
 
     public void removeDepartment(Long id) throws Exception {
         if (id != null){
-            departmentRepository.delete(id);
+            Department department = findDepartment(id);
+            if (department != null){
+                departmentRepository.delete(department);
+            }
+
         }
 
     }

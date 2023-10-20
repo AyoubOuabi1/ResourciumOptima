@@ -12,13 +12,13 @@
     </a>
     <hr class="sidebar-divider my-0">
     <ul class="navbar-nav text-light" id="accordionSidebar">
-      <li class="nav-item"><a class="nav-link" href="#">
+      <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/employees">
         <i class="bi bi-house"></i><span>Employee</span></a></li>
       <li class="nav-item"><a class="nav-link  " href="#"><i
               class="bi bi-speedometer2"></i><span>Reservation</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#"><i
               class="bi bi-tags"></i><span>Equipment</span></a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i
+      <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/departments"><i
               class="bi bi-file-play"></i><span>Department</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#"><i
               class="bi bi-person-circle"></i><span>My Profile</span></a></li>
