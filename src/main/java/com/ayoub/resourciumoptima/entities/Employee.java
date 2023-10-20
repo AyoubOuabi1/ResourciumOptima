@@ -25,11 +25,6 @@ public class Employee {
     @Setter
     private String lastName;
 
-
-    @Column(name = "username")
-    @Getter
-    @Setter
-    private String username;
     @Column(name = "password")
     @Getter
     @Setter

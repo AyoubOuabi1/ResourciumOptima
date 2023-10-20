@@ -54,7 +54,8 @@ public class EmployeeService {
         HttpSession session=request.getSession();
         Employee emp=(Employee) session.getAttribute("currentUser");
         List<Employee> employees = employeeRepository.getAll();
-        return employees.stream().filter(employee -> employee.getId()==emp.getId()).collect(Collectors.toList());
+        employees.remove(emp);
+        return employees;
      }
 
     public Employee checkLogin(String email, String password)  throws NullPointerException{

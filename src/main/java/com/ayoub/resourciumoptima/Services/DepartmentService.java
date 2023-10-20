@@ -25,10 +25,11 @@ public class DepartmentService {
         return departmentRepository.findById(id);
     }
 
-    public void saveDepartment(Department department) {
+    public Department saveDepartment(Department department) {
         if (department != null){
             departmentRepository.save(department);
         }
+        return department;
 
     }
 
@@ -45,7 +46,7 @@ public class DepartmentService {
         }
      }
 
-    public List<Department> getTasks()  throws NullPointerException{
+    public List<Department> getDepartments()  throws NullPointerException{
         return departmentRepository.getAll();
     }
 
