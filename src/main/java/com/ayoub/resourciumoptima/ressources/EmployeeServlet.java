@@ -44,9 +44,10 @@ public class EmployeeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long DepartmentId = Long.valueOf(req.getParameter("departmentId"));
-        if (DepartmentId!=null) {
+        /*Long DepartmentId=2L;
+       *//* if (DepartmentId!=null) {
             DepartmentId= 2L;
-        }
+        }*/
         Department department = departmentService.findDepartment(DepartmentId);
         Employee employee = new Employee();
         employee.setDepartment(department);

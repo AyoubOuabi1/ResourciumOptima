@@ -20,7 +20,7 @@
 
     <div class="card-body">
         <div class="row">
-            <form action="${pageContext.request.contextPath}/employees" method="POST" enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/employees" method="POST" >
 
                 <div class="form-group bg-light border rounded-3 p-3 mt-3 row">
 
