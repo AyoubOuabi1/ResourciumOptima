@@ -1,6 +1,7 @@
 <%@ page import="com.ayoub.resourciumoptima.entities.Employee" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.ayoub.resourciumoptima.entities.Department" %>
+<%@ page import="java.util.Optional" %>
 <%@ include file="../components/head.jsp" %>
 
 <div class="d-flex justify-content-between">
@@ -49,27 +50,34 @@
         </tr>
         </thead>
         <tbody >
-        <% List<Department> departments = (List<Department>) request.getAttribute("departmentList");
-          for (Department department : departments) { %>
+        <% Optional<List<Department>> departmentsOptional = (Optional<List<Department>>) request.getAttribute("departmentList");
+
+          if (departmentsOptional.isPresent()) {
+            List<Department> departments = departmentsOptional.get();
+            for (Department department : departments) { %>
         <tr>
           <td><%= department.getId() %></td>
           <td><%= department.getName() %></td>
-           <td>
-             <form action="${pageContext.request.contextPath}/departments" method="post">
-                  <input type="hidden" name="action" value="update">
-                  <input type="hidden" name="departmentId" value="<%=department.getId()%>">
-                  <button type="submit" class="btn btn-primary">update</button>
-               </form>
+          <td>
+            <form action="${pageContext.request.contextPath}/departments" method="post">
+              <input type="hidden" name="action" value="update">
+              <input type="hidden" name="departmentId" value="<%=department.getId()%>">
+              <button type="submit" class="btn btn-primary">update</button>
+            </form>
           </td>
-          <td> <form action="${pageContext.request.contextPath}/departments" method="post">
-            <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="departmentId" value="<%=department.getId()%>">
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
+          <td>
+            <form action="${pageContext.request.contextPath}/departments" method="post">
+              <input type="hidden" name="action" value="delete">
+              <input type="hidden" name="departmentId" value="<%=department.getId()%>">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
           </td>
-
         </tr>
-        <% } %>
+        <% }
+          }
+        %>
+
+
 
 
         </tbody>

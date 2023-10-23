@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @WebServlet(name="employeeServlet", urlPatterns = "/employees")
 public class EmployeeServlet extends HttpServlet {
@@ -33,7 +34,7 @@ public class EmployeeServlet extends HttpServlet {
             System.out.println("login");
             resp.sendRedirect("/ResourciumOptima_war/login");
         }else {
-            List<Employee>  employees = employeeService.getEmployees(req);
+           Optional<List<Employee>> employees = employeeService.getEmployees(req);
             req.setAttribute("employeeList", employees);
             RequestDispatcher rd=req.getRequestDispatcher("views/layouts/employee.jsp");
             rd.forward(req,resp);

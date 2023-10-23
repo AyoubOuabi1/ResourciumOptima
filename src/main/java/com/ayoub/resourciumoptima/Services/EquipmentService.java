@@ -9,6 +9,7 @@ import com.ayoub.resourciumoptima.interfaces.EquipmentRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class EquipmentService {
@@ -35,7 +36,11 @@ public class EquipmentService {
 
     public void removeEquipment(Long id) throws Exception {
         if (id != null){
-            equipmentRepository.delete(id);
+            Equipment equipment=findEquipment(id);
+            if (equipment != null){
+                equipmentRepository.delete(equipment);
+            }
+
         }
 
     }
@@ -46,8 +51,11 @@ public class EquipmentService {
         }
      }
 
-    public List<Equipment> getTasks()  throws NullPointerException{
-        return equipmentRepository.getAll();
+    public Optional<List<Equipment>> getEquipments()  throws NullPointerException{
+        if(equipmentRepository.getAll().size() == 0){
+            return Optional.empty();
+        }
+        return Optional.of(equipmentRepository.getAll());
     }
 
 

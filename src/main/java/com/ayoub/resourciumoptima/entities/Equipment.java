@@ -14,6 +14,8 @@ import java.util.List;
 @Table(name = "equipement") @NoArgsConstructor @AllArgsConstructor
 public class Equipment {
 
+    @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

@@ -1,5 +1,6 @@
 <%@ page import="com.ayoub.resourciumoptima.entities.Employee" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Optional" %>
 <%@ include file="../components/head.jsp" %>
 
 <div class="d-flex justify-content-between">
@@ -35,23 +36,27 @@
                 </tr>
                 </thead>
                 <tbody id="emplyeetable">
-                <% List<Employee> employees = (List<Employee>) request.getAttribute("employeeList");
-                    for (Employee employee : employees) { %>
-                    <tr>
-                        <td><%= employee.getFirstName()+" "+employee.getLastName() %></td>
-                        <td><%= employee.getEmail() %></td>
-                        <td><%= employee.getPosition() %></td>
-                        <td><a href="#"><button class="btn btn-success">open</button></a></td>
-                        <td><button class="btn btn-primary">update</button></td>
-                        <td> <form action="${pageContext.request.contextPath}/employees" method="post">
-                                <input type="hidden" name="action" value="delete">
-                                <input type="hidden" name="employeeId" value="<%=employee.getId()%>">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
+                <% Optional<List<Employee>> employees1 = (Optional<List<Employee>>) request.getAttribute("employeeList");
+                    if (employees1.isPresent()) {
+                        List<Employee> employees = employees1.get();
+                        for (Employee employee : employees) { %>
+                            <tr>
+                                <td><%= employee.getFirstName()+" "+employee.getLastName() %></td>
+                                <td><%= employee.getEmail() %></td>
+                                <td><%= employee.getPosition() %></td>
+                                <td><a href="#"><button class="btn btn-success">open</button></a></td>
+                                <td><button class="btn btn-primary">update</button></td>
+                                <td>
+                                    <form action="${pageContext.request.contextPath}/employees" method="post">
+                                        <input type="hidden" name="action" value="delete">
+                                        <input type="hidden" name="employeeId" value="<%=employee.getId()%>">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                     </form>
+                                </td>
 
-                    </tr>
-                <% } %>
+                            </tr>
+                         <% }
+                    }%>
 
 
                 </tbody>

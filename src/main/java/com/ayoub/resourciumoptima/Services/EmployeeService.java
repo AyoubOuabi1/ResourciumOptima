@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.http.HttpRequest;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
@@ -28,7 +29,9 @@ public class EmployeeService {
 
 
     public Employee findEmployee(Long id) throws NullPointerException {
-        return employeeRepository.findById(id);
+        if (id != null)
+            return employeeRepository.findById(id);
+        return null;
     }
 
     public void saveEmployee(Employee employee) {
@@ -37,17 +40,13 @@ public class EmployeeService {
         }
 
     }
-
     public void removeEmployee(Long id) throws Exception {
         if (id != null){
-            Employee employee = employeeRepository.findById(id);
+            Employee employee = findEmployee(id);
             if (employee != null) {
                 employeeRepository.delete(employee);
             }
         }
-       // EntityManagerFct.getEntityManager().remove(employee);
-       // employeeRepository.delete(employee);
-
     }
 
     public Employee updateEmployee(Employee employee) throws Exception {
@@ -57,12 +56,17 @@ public class EmployeeService {
         return employee;
      }
 
-    public List<Employee> getEmployees(HttpServletRequest request)  throws NullPointerException{
+    public Optional<List<Employee>> getEmployees(HttpServletRequest request)  throws NullPointerException{
         HttpSession session=request.getSession();
         Employee emp=(Employee) session.getAttribute("currentUser");
-        List<Employee> employees = employeeRepository.getAll();
-        employees.remove(emp);
-        return employees;
+        if(employeeRepository.getAll().size()>0){
+            List<Employee> employees = employeeRepository.getAll();
+            employees.remove(emp);
+            Optional<List<Employee>> employees1 = Optional.of(employees);
+            return employees1;
+        }
+
+        return Optional.empty();
      }
 
     public Employee checkLogin(String email, String password)  throws NullPointerException{

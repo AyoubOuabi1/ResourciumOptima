@@ -8,7 +8,9 @@ import com.ayoub.resourciumoptima.interfaces.DepartmentRepository;
 import com.ayoub.resourciumoptima.interfaces.TaskRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class DepartmentService {
@@ -50,8 +52,11 @@ public class DepartmentService {
         }
      }
 
-    public List<Department> getDepartments()  throws NullPointerException{
-        return departmentRepository.getAll();
+    public Optional<List<Department>> getDepartments()  throws NullPointerException{
+        if(departmentRepository.getAll().size() == 0){
+            return Optional.empty();
+        }
+        return Optional.of(departmentRepository.getAll());
     }
 
 

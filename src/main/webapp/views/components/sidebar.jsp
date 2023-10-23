@@ -16,13 +16,11 @@
         <i class="bi bi-house"></i><span>Employee</span></a></li>
       <li class="nav-item"><a class="nav-link  " href="#"><i
               class="bi bi-speedometer2"></i><span>Reservation</span></a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i
+      <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/equipments"><i
               class="bi bi-tags"></i><span>Equipment</span></a></li>
       <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/departments"><i
               class="bi bi-file-play"></i><span>Department</span></a></li>
-      <li class="nav-item"><a class="nav-link" href="#"><i
-              class="bi bi-person-circle"></i><span>My Profile</span></a></li>
-    </ul>
+        </ul>
     <div class="text-center d-none d-md-inline">
       <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
     </div>

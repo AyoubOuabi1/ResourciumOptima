@@ -25,16 +25,11 @@ public class EquipmentRepositoryImp implements EquipmentRepository {
     }
 
     @Override
-    public void delete(Long id) {
-        Equipment de = findById(id);
-        if (de != null){
-            entityManager.getTransaction().begin();
-            entityManager.remove(de);
-            //entityManager.flush();
-            entityManager.getTransaction().commit();
-
-        }
-
+    public void delete(Equipment equipment) {
+        entityManager.getTransaction().begin();
+        entityManager.remove(equipment);
+        //entityManager.flush();
+        entityManager.getTransaction().commit();
     }
 
     @Override

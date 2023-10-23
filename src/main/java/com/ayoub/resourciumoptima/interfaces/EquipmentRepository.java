@@ -7,7 +7,7 @@ import java.util.List;
 public interface EquipmentRepository {
     void save(Equipment obj);
 
-    void delete(Long id);
+    void delete(Equipment obj);
 
     void update(Equipment obj);
 

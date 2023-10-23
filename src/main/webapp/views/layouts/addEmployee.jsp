@@ -1,6 +1,8 @@
 <%@ page import="com.ayoub.resourciumoptima.entities.Department" %>
 <%@ page import="com.ayoub.resourciumoptima.Services.DepartmentService" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Optional" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: HP
   Date: 19/10/2023
@@ -10,12 +12,16 @@
 <%@ include file="../components/head.jsp" %>
 <%
     DepartmentService departmentService = new DepartmentService();
-    List<Department> departmentList = departmentService.getDepartments();
+    Optional<List<Department>> departments = departmentService.getDepartments();
+    List<Department> departmentList=new ArrayList<>();
+    if(departments.isPresent()){
+        departmentList=departments.get();
+    }
 %>
 <div class="card shadow" >
 
     <div class="card-header py-3">
-        <p class="text-primary m-0 fw-bold">Ajouter Vehicule</p>
+        <p class="text-primary m-0 fw-bold">Add employee</p>
     </div>
 
     <div class="card-body">

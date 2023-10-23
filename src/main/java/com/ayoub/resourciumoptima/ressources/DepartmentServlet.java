@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @WebServlet(name="DepartmentServlet", urlPatterns = "/departments")
@@ -31,7 +32,7 @@ public class DepartmentServlet extends HttpServlet {
             System.out.println("login");
             resp.sendRedirect("/ResourciumOptima_war/login");
         }else {
-            List<Department>  departments = departmentService.getDepartments();
+            Optional<List<Department>> departments = departmentService.getDepartments();
             req.setAttribute("departmentList", departments);
             RequestDispatcher rd=req.getRequestDispatcher("views/layouts/department.jsp");
             rd.forward(req,resp);
