@@ -21,8 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h2 class="text-center text-white mt-5">Login form </h2>
-                <div class="card my-5">
+                 <div class="card my-5">
                     <form method="post" action="${pageContext.request.contextPath}/login" class="card-body cardbody-color p-lg-5">
 
                         <div class="text-center">

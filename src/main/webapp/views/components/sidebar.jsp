@@ -15,7 +15,7 @@
       <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/employees">
         <i class="bi bi-house"></i><span>Employee</span></a></li>
       <li class="nav-item"><a class="nav-link  " href="#"><i
-              class="bi bi-speedometer2"></i><span>Reservation</span></a></li>
+              class="bi bi-speedometer2"></i><span>Task</span></a></li>
       <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/equipments"><i
               class="bi bi-tags"></i><span>Equipment</span></a></li>
       <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/departments"><i

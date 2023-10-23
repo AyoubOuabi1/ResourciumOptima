@@ -30,8 +30,7 @@
                         <th>Name</th>
                         <th>email</th>
                         <th>position</th>
-                         <th>open task</th>
-                        <th>update department</th>
+                        <th>update</th>
                         <th>delete</th>
                 </tr>
                 </thead>
@@ -44,8 +43,7 @@
                                 <td><%= employee.getFirstName()+" "+employee.getLastName() %></td>
                                 <td><%= employee.getEmail() %></td>
                                 <td><%= employee.getPosition() %></td>
-                                <td><a href="#"><button class="btn btn-success">open</button></a></td>
-                                <td><button class="btn btn-primary">update</button></td>
+                                 <td><a href="views/layouts/showEmployee.jsp?id=<%=employee.getId()%>"><button class="btn btn-primary">update</button></a></td>
                                 <td>
                                     <form action="${pageContext.request.contextPath}/employees" method="post">
                                         <input type="hidden" name="action" value="delete">

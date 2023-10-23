@@ -72,7 +72,7 @@ public class EmployeeServlet extends HttpServlet {
     void addEmployee(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Long DepartmentId = Long.valueOf(req.getParameter("departmentId"));
         Department department = departmentService.findDepartment(DepartmentId);
-        Employee employee=getEmployee(req,department);
+        Employee employee=getEmployee(req,department,false);
          employeeService.saveEmployee(employee);
         resp.sendRedirect("/ResourciumOptima_war/employees");
     }
@@ -80,13 +80,20 @@ public class EmployeeServlet extends HttpServlet {
     void updateEmployee(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         Long DepartmentId = Long.valueOf(req.getParameter("departmentId"));
         Department department = departmentService.findDepartment(DepartmentId);
-        Employee employee=getEmployee(req,department);
+        Employee employee=getEmployee(req,department,true);
         employeeService.updateEmployee(employee);
         resp.sendRedirect("/ResourciumOptima_war/employees");
     }
 
-    Employee getEmployee(HttpServletRequest req,Department department){
-        Employee employee = new Employee();
+    Employee getEmployee(HttpServletRequest req,Department department,boolean update){
+        Employee employee;
+        if (update){
+            Long id = Long.valueOf(req.getParameter("empId"));
+            employee = employeeService.findEmployee(id);
+        }else {
+            employee = new Employee();
+        }
+
         employee.setDepartment(department);
         employee.setFirstName(req.getParameter("firstName"));
         employee.setLastName(req.getParameter("lastName"));
