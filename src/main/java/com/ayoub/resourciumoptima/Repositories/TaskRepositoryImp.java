@@ -4,6 +4,7 @@ import com.ayoub.resourciumoptima.Config.EntityManagerFct;
 import com.ayoub.resourciumoptima.entities.Task;
 import com.ayoub.resourciumoptima.interfaces.TaskRepository;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
@@ -51,10 +52,15 @@ public class TaskRepositoryImp implements TaskRepository {
     }
 
     @Override
-    public List getAll( ) {
-        return entityManager.createNativeQuery("select  task.id as taskId,task.description,task.due_date,task.end_date, task.priority  from Task inner join equipement on Task.assigned_equipment_id = equipement.id where equipement.type='jetable' and Task.end_date > SYSDATE()", Task.class).getResultList();
-        // return entityManager.createQuery("SELECT e FROM Task e where Equipment.type='jetable' and e.endDate > local_time.now ", Task.class).getResultList();
+    public List<Task> getAll() {
+        String jpql = "SELECT t FROM Task t " +
+                "INNER JOIN t.assignedEquipment eq " +
+                "WHERE eq.type = 'jetable' AND t.endDate > CURRENT_TIMESTAMP";
+
+        TypedQuery<Task> query = entityManager.createQuery(jpql, Task.class);
+        return query.getResultList();
     }
+
 
 
 }

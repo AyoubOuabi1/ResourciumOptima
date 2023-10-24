@@ -48,4 +48,17 @@ public class Task {
     @Setter
     private Equipment assignedEquipment;
 
- }
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", dueDate=" + dueDate +
+                ", endDate=" + endDate +
+                ", priority='" + priority + '\'' +
+                ", status='" + status + '\'' +
+                ", assignedEmployee=" + assignedEmployee +
+                ", assignedEquipment=" + assignedEquipment +
+                '}';
+    }
+}

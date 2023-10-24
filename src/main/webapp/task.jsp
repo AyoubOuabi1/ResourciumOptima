@@ -15,13 +15,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     EquipmentService equipmentService = new EquipmentService();
-    Equipment equipment = new Equipment();
-    equipment.setMaintenance_date(new Date(System.currentTimeMillis()));
-    equipment.setType("jetable");
-    equipment.setName("equipment");
-    equipment.setPurchaseDate(new Date(System.currentTimeMillis()));
-    equipment.setStatus("available");
-    equipmentService.saveEquipment(equipment);
+    Equipment equipment = equipmentService.findEquipment(302L);
+    EmployeeService employee=new EmployeeService();
+     Employee emp=employee.findEmployee(104L);
 
     TaskService taskService = new TaskService();
 
@@ -33,9 +29,7 @@
     task.setPriority("high");
     task.setEndDate(Date.valueOf("2024-01-01"));
     task.setDueDate(new Date(System.currentTimeMillis()));
-    EmployeeService employee=new EmployeeService();
-    Long id=104L;
-    Employee emp=employee.findEmployee(id);
+
     task.setAssignedEmployee(emp);
     taskService.saveTask(task);
     List<Task>t = taskService.getTasks();
