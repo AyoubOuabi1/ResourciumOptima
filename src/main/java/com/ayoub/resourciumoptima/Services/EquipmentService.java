@@ -4,12 +4,15 @@ import com.ayoub.resourciumoptima.Repositories.DepartmentRepositoryImp;
 import com.ayoub.resourciumoptima.Repositories.EquipmentRepositoryImp;
 import com.ayoub.resourciumoptima.entities.Department;
 import com.ayoub.resourciumoptima.entities.Equipment;
+import com.ayoub.resourciumoptima.entities.Task;
 import com.ayoub.resourciumoptima.interfaces.DepartmentRepository;
 import com.ayoub.resourciumoptima.interfaces.EquipmentRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 @ApplicationScoped
 public class EquipmentService {
@@ -55,6 +58,20 @@ public class EquipmentService {
         if(equipmentRepository.getAll().size() == 0){
             return Optional.empty();
         }
+
+       /* List<Equipment> equipments = equipmentRepository.getAll();
+        List<Task>  tasks = new ArrayList<>();
+        equipments.forEach(new Consumer<Equipment>() {
+            @Override
+            public void accept(Equipment equipment) {
+                for (Task task : equipment.getTasks()) {
+                    if(equipment.getType().equals("jetable")&& task.getEndDate().after(task.getDueDate())){
+                       tasks.add(task);
+                    }
+                }
+            }
+        });*/
+
         return Optional.of(equipmentRepository.getAll());
     }
 

@@ -22,6 +22,11 @@ public class Task {
     @Setter
     private Date dueDate;
 
+    @Column(name = "end_date")
+    @Getter
+    @Setter
+    private Date endDate;
+
     @Column(name = "priority")
     @Getter
     @Setter

@@ -46,6 +46,7 @@ public class TaskService {
      }
 
     public List<Task> getTasks()  throws NullPointerException{
+
         return taskRepository.getAll();
     }
 

@@ -89,7 +89,7 @@
         </div>
 
         <div class="d-flex justify-content-center mt-3">
-          <button type="submit" name="action" value="update" class="btn btn-primary">Submit</button>
+          <button type="submit" name="action" value="update" class="btn btn-primary">Update</button>
         </div>
       </form>
     </div>

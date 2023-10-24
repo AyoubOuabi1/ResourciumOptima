@@ -1,6 +1,7 @@
 package com.ayoub.resourciumoptima.entities;
 
 
+import jakarta.enterprise.concurrent.Trigger;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -43,13 +44,14 @@ public class Equipment {
     private String status;
 
 
+
     @Column(name = "maintenance_date")
     @Getter
     @Setter
     private Date maintenance_date;
 
 
-    @OneToMany(mappedBy = "assignedEquipment", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "assignedEquipment", cascade = CascadeType.ALL ,fetch= FetchType.EAGER)
     @Getter
     @Setter
     private List<Task> tasks;

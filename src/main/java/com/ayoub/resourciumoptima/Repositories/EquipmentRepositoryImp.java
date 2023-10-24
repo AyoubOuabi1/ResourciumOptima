@@ -48,6 +48,6 @@ public class EquipmentRepositoryImp implements EquipmentRepository {
 
     @Override
     public List<Equipment> getAll() {
-        return entityManager.createQuery("SELECT e FROM Equipment e", Equipment.class).getResultList();
+        return entityManager.createQuery("SELECT e FROM Equipment e where e.type='jetable' e.endDate > local_time.now", Equipment.class).getResultList();
     }
 }
