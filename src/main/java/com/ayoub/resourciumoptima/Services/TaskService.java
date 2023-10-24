@@ -9,6 +9,7 @@ import com.ayoub.resourciumoptima.interfaces.TaskRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class TaskService {
@@ -45,8 +46,11 @@ public class TaskService {
         }
      }
 
-    public List<Task> getTasks()  throws NullPointerException{
-        return taskRepository.getAll();
+    public Optional<List<Task>> getTasks()  throws NullPointerException{
+        if(taskRepository.getAll().size()>0){
+            return Optional.of(taskRepository.getAll());
+        }
+        return Optional.of(taskRepository.getAll());
     }
 
 

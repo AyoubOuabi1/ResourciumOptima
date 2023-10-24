@@ -68,7 +68,7 @@
           <td>
             <form action="${pageContext.request.contextPath}/departments" method="post">
               <input type="hidden" name="action" value="delete">
-              <input type="hidden" name="departmentId" value="<%=department.getId()%>">
+              <input type="hidden" name="departmentId" value="<%= department.getId() %>">
               <button type="submit" class="btn btn-danger">Delete</button>
             </form>
           </td>

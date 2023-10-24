@@ -2,16 +2,17 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Optional" %>
 <%@ page import="com.ayoub.resourciumoptima.entities.Equipment" %>
+<%@ page import="com.ayoub.resourciumoptima.entities.Task" %>
 <%@ include file="../components/head.jsp" %>
 
 <div class="d-flex justify-content-between">
-    <h3 class="text-dark mb-4">Employees</h3>
-    <a href="views/layouts/addEquipment.jsp"><button type="button" class="btn btn-primary" >Add new Equipment</button></a>
+    <h3 class="text-dark mb-4">Tasks</h3>
+    <a href="views/layouts/addEquipment.jsp"><button type="button" class="btn btn-primary" >Add new Task</button></a>
 
 </div>
 <div class="card shadow">
     <div class="card-header py-3">
-        <p class="text-primary m-0 fw-bold">Equipment</p>
+        <p class="text-primary m-0 fw-bold">Tasks</p>
     </div>
     <div class="card-body">
         <div class="row">
@@ -28,30 +29,33 @@
             <table id="dataTable" class="table my-0">
                 <thead>
                 <tr>
-                     <th>Name</th>
-                    <th>type</th>
-                    <th>purchase Date </th>
-                    <th>purchase Date </th>
+                    <th>Name</th>
+                    <th>start date</th>
+                    <th>end date </th>
+                    <th>status </th>
+                    <th>Employee</th>
+                    <th>Equipment</th>
                     <th>update</th>
                     <th>delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                <% Optional<List<Equipment>> equipments1 = (Optional<List<Equipment>>) request.getAttribute("equipmentList");
-                    if (equipments1.isPresent()) {
-                        List<Equipment> equipments =equipments1.get();
-                        for (Equipment equipment : equipments) { %>
+                <% Optional<List<Task>> tasks1 = (Optional<List<Task>>) request.getAttribute("tasksList");
+                    if (tasks1.isPresent()) {
+                        List<Task> tasks =tasks1.get();
+                        for (Task task : tasks) { %>
                 <tr>
-                    <td><%= equipment.getName()%></td>
-                    <td><%= equipment.getType() %></td>
-                    <td><%= equipment.getPurchaseDate()%></td>
-                    <td><%= equipment.getStatus()%></td>
-                    <td><a href="#"><button class="btn btn-success">open</button></a></td>
-                    <td><button class="btn btn-primary">update</button></td>
+                    <td><%= task.getName() %></td>
+                    <td><%= String.valueOf(task.getDueDate()).substring(0,10) %></td>
+                     <td><%= String.valueOf(task.getEndDate()).substring(0,10) %></td>
+                    <td><%= task.getStatus() %></td>
+                    <td><%= task.getAssignedEmployee().getFirstName()+" " + task.getAssignedEmployee().getLastName()%></td>
+                    <td><%= task.getAssignedEquipment().getName() %></td>
+                     <td><button class="btn btn-primary">update</button></td>
                     <td>
-                        <form action="${pageContext.request.contextPath}/equipments" method="post">
+                        <form action="${pageContext.request.contextPath}/tasks" method="post">
                             <input type="hidden" name="action" value="delete">
-                            <input type="hidden" name="equipmentId" value="<%= equipment.getId() %>">
+                            <input type="hidden" name="taskId" value="<%= task.getId() %>">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>

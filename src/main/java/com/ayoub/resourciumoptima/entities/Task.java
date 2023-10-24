@@ -10,6 +10,8 @@ import java.util.Date;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
     private int id;
 
     @Column(name = "description")
@@ -17,10 +19,20 @@ public class Task {
     @Setter
     private String description;
 
-     @Column(name = "due_date")
+    @Column(name = "name")
+    @Getter
+    @Setter
+    private String name;
+
+    @Column(name = "due_date")
     @Getter
     @Setter
     private Date dueDate;
+
+    @Column(name = "end_date")
+    @Getter
+    @Setter
+    private Date endDate;
 
     @Column(name = "priority")
     @Getter
