@@ -7,7 +7,7 @@
 
 <div class="d-flex justify-content-between">
     <h3 class="text-dark mb-4">Tasks</h3>
-    <a href="views/layouts/addEquipment.jsp"><button type="button" class="btn btn-primary" >Add new Task</button></a>
+    <a href="views/layouts/addTask.jsp"><button type="button" class="btn btn-primary" >Add new Task</button></a>
 
 </div>
 <div class="card shadow">

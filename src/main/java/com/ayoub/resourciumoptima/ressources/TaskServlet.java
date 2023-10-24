@@ -60,7 +60,11 @@ public class TaskServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }else if (action.equals("create")){
-            addTask(req, resp);
+            try {
+                addTask(req, resp);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }else if (action.equals("update")){
             try {
                 updateTask(req, resp);
@@ -76,7 +80,7 @@ public class TaskServlet extends HttpServlet {
         resp.sendRedirect("/ResourciumOptima_war/tasks");
     }
 
-    void addTask(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    void addTask(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
        taskService.saveTask(getTask(req,false));
         resp.sendRedirect("/ResourciumOptima_war/tasks");
@@ -87,7 +91,7 @@ public class TaskServlet extends HttpServlet {
         resp.sendRedirect("/ResourciumOptima_war/tasks");
     }
 
-    Task getTask(HttpServletRequest req, boolean update){
+    Task getTask(HttpServletRequest req, boolean update) throws Exception {
         Long empId = Long.valueOf(req.getParameter("employeeId"));
         Long equipId = Long.valueOf(req.getParameter("equipmentId"));
         Employee employee = employeeService.findEmployee(empId);
@@ -108,6 +112,8 @@ public class TaskServlet extends HttpServlet {
         task.setDueDate(Date.valueOf(req.getParameter("dueDate")));
         task.setEndDate(Date.valueOf(req.getParameter("endDate")));
         task.setStatus("not yet started");
+        equipment.setStatus("not available");
+        equipmentService.updateEquipment(equipment);
         return task;
     }
 }

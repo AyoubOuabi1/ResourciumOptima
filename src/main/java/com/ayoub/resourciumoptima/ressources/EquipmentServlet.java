@@ -56,11 +56,14 @@ public class EquipmentServlet extends HttpServlet {
             Long id = Long.valueOf(req.getParameter("equipmentId"));
 
             equipmentService.removeEquipment(id);
+            resp.sendRedirect("/ResourciumOptima_war/equipments");
         }else if (action.equals("create")){
             equipmentService.saveEquipment(getEquipment(req));
+            resp.sendRedirect("/ResourciumOptima_war/equipments");
 
         } else if (action.equals("update")) {
             equipmentService.updateEquipment(getEquipment(req));
+            resp.sendRedirect("/ResourciumOptima_war/equipments");
 
         }
     }

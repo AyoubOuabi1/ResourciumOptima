@@ -31,7 +31,7 @@
                      <th>Name</th>
                     <th>type</th>
                     <th>purchase Date </th>
-                    <th>purchase Date </th>
+                    <th>Status </th>
                     <th>update</th>
                     <th>delete</th>
                 </tr>
@@ -46,8 +46,7 @@
                     <td><%= equipment.getType() %></td>
                     <td><%= equipment.getPurchaseDate()%></td>
                     <td><%= equipment.getStatus()%></td>
-                    <td><a href="#"><button class="btn btn-success">open</button></a></td>
-                    <td><button class="btn btn-primary">update</button></td>
+                     <td><button class="btn btn-primary">update</button></td>
                     <td>
                         <form action="${pageContext.request.contextPath}/equipments" method="post">
                             <input type="hidden" name="action" value="delete">
