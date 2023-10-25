@@ -11,7 +11,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.List;
 import java.util.Optional;
 
-@ApplicationScoped
 public class EquipmentService {
 
     //@Inject

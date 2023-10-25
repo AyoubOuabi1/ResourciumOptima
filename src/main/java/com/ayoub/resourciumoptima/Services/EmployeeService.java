@@ -57,11 +57,15 @@ public class EmployeeService {
      }
 
     public Optional<List<Employee>> getEmployees(HttpServletRequest request)  throws NullPointerException{
-        HttpSession session=request.getSession();
-        Employee emp=(Employee) session.getAttribute("currentUser");
+
+
         if(employeeRepository.getAll().size()>0){
             List<Employee> employees = employeeRepository.getAll();
-            employees.remove(emp);
+            if (request != null){
+                HttpSession session=request.getSession();
+                Employee emp=(Employee) session.getAttribute("currentUser");
+                employees.remove(emp);
+            }
             Optional<List<Employee>> employees1 = Optional.of(employees);
             return employees1;
         }
