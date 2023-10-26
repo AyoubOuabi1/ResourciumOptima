@@ -99,7 +99,7 @@ public class TaskServlet extends HttpServlet {
 
         Task task;
         if (update){
-            Long id = Long.valueOf(req.getParameter("taskId"));
+            Long id = Long.valueOf(req.getParameter("id"));
             task =taskService.findTask(id);
         }else {
             task = new Task();

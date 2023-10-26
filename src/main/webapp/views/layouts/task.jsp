@@ -51,7 +51,7 @@
                     <td><%= task.getStatus() %></td>
                     <td><%= task.getAssignedEmployee().getFirstName()+" " + task.getAssignedEmployee().getLastName()%></td>
                     <td><%= task.getAssignedEquipment().getName() %></td>
-                     <td><button class="btn btn-primary">update</button></td>
+                    <td><a href="views/layouts/updateTask.jsp?id=<%=task.getId()%>"><button class="btn btn-primary">update</button></a></td>
                     <td>
                         <form action="${pageContext.request.contextPath}/tasks" method="post">
                             <input type="hidden" name="action" value="delete">
